@@ -1,3 +1,5 @@
+// operating system information
+
 const os = require('os');
 
 const getSystemInfo = () =>{

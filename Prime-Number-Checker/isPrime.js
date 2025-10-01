@@ -1,4 +1,4 @@
-
+//prime number
 const checkPrime = (num) => {
 
      if(num < 2){

@@ -1,3 +1,6 @@
+// operating system information
+
+
 const factorial = (num) => {
       if(num < 1){
         console.log("not a number");
