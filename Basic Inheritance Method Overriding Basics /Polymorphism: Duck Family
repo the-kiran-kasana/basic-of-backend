@@ -1,0 +1,68 @@
+class PolyDuck {
+  fly(): void {
+    console.log("Duck is flying...");
+  }
+}
+
+class DesiDuck extends PolyDuck {
+  fly(): void {
+    console.log("DesiDuck flies at 10kmph");
+  }
+}
+
+class VidesiDuck extends PolyDuck {
+  fly(): void {
+    console.log("VidesiDuck flies at 20kmph");
+  }
+}
+
+class SmartDuck extends PolyDuck {
+  fly(): void {
+    console.log("SmartDuck flies at 50kmph");
+  }
+}
+
+// Polymorphism function
+function makeDuckFly(duck: PolyDuck) {
+  duck.fly();
+}
+
+// Testing
+makeDuckFly(new DesiDuck());
+makeDuckFly(new VidesiDuck());
+makeDuckFly(new SmartDuck());
+
+
+✅ L1: Q5 – Access Modifiers Exploration
+
+
+
+class User {
+  public name: string;
+  private orgCode = "DuckCorp";
+  protected role: string;
+
+  constructor(name: string, role: string) {
+    this.name = name;
+    this.role = role;
+  }
+
+  introduce() {
+    console.log(`I am ${this.name} from ${this.orgCode}`);
+  }
+}
+
+class Manager extends User {
+  getRole() {
+    console.log(this.role); // Allowed: role is protected
+  }
+}
+
+const user = new User("Daffy", "Employee");
+user.introduce();          // I am Daffy from DuckCorp
+
+const manager = new Manager("Donald", "Manager");
+manager.getRole();         // Manager
+
+// ❌ Direct access (uncommenting will cause compile error)
+// console.log(user.orgCode); 
