@@ -1,0 +1,25 @@
+// High-level module depends on abstraction
+interface Database {
+  save(data: string): void;
+}
+
+// Low-level module implements the interface
+class MySQLService implements Database {
+  save(data: string): void {
+    console.log("Saving to MySQL:", data);
+  }
+}
+
+// High-level module depends on Database, not MySQLService
+class UserService {
+  constructor(private db: Database) {}
+
+  register(user: string) {
+    this.db.save(user);
+  }
+}
+
+// Usage
+const mysql = new MySQLService();
+const userService = new UserService(mysql);
+userService.register("Kiran");
