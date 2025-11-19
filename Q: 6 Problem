@@ -1,0 +1,43 @@
+// Strategy Interface
+interface PaymentStrategy {
+  pay(amount: number): void;
+}
+
+// Concrete Strategies
+class CardPayment implements PaymentStrategy {
+  pay(amount: number): void {
+    console.log(`Paid ₹${amount} using Card`);
+  }
+}
+
+class UpiPayment implements PaymentStrategy {
+  pay(amount: number): void {
+    console.log(`Paid ₹${amount} using UPI`);
+  }
+}
+
+class BitcoinPayment implements PaymentStrategy {
+  pay(amount: number): void {
+    console.log(`Paid ₹${amount} using Bitcoin`);
+  }
+}
+
+// Context Class
+class Payment {
+  constructor(private strategy: PaymentStrategy) {}
+
+  setStrategy(strategy: PaymentStrategy) {
+    this.strategy = strategy;
+  }
+
+  process(amount: number) {
+    this.strategy.pay(amount);
+  }
+}
+
+// Usage
+const payment = new Payment(new CardPayment());
+payment.process(1000);
+
+payment.setStrategy(new BitcoinPayment());
+payment.process(2000);
