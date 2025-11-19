@@ -1,0 +1,17 @@
+interface Flyable {
+  fly(): void;
+}
+
+class Bird {
+  // shared bird properties
+}
+
+class Sparrow extends Bird implements Flyable {
+  fly(): void {
+    console.log("Sparrow is flying...");
+  }
+}
+
+class Ostrich extends Bird {
+  // No fly() method — because it can't fly
+}
